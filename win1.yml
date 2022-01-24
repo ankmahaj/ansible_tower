@@ -14,10 +14,19 @@
        #reboot: yes
 
 
+   - name: Install choco
+     win_chocolatey:
+       name: chocolatey
+       state: present
+       
+   - name: disable enhanced exit codes
+     win_chocolatey:
+       win_shell: C:\ProgramData\chocolatey\bin\choco.exe feature disable--
+       name: "useEnhancedExitCodes"
+       
    - name: Install git
      win_chocolatey:
        name:
-         - chocolatey
          - git
          - notepadplusplus
        state: present
