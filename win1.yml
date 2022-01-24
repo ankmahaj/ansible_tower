@@ -5,24 +5,13 @@
    - name: Set timezone to 'GMT Standard Time' (GMT)
      win_timezone:
        timezone: GMT Standard Time
-   #- name: Choose which Windows updates to install
-     #win_updates:
-       #category_names:
-         #- SecurityUpdates
-         #- CriticalUpdates
-         #- UpdateRollups
-       #reboot: yes
-
-
-   - name: Install choco
-     win_chocolatey:
-       name: chocolatey
-       state: present
-       
-   - name: disable enhanced exit codes
-     win_chocolatey:
-       win_shell: C:\ProgramData\chocolatey\bin\choco.exe feature disable--
-       name: "useEnhancedExitCodes"
+   - name: Choose which Windows updates to install
+     win_updates:
+       category_names:
+         - SecurityUpdates
+         - CriticalUpdates
+         - UpdateRollups
+       reboot: yes
        
    - name: Install git
      win_chocolatey:
